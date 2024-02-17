@@ -1,0 +1,43 @@
+saldo = 0
+saques_diarios = 3
+limite_saque = 500
+transacoes = []
+
+while True:
+    print("\nEscolha uma operação:")
+    print("1. Sacar")
+    print("2. Depositar")
+    print("3. Visualizar Extrato")
+    print("4. Sair")
+
+    escolha = input("Digite o número da operação: ")
+
+    if escolha == '1':
+        valor_saque = float(input("Digite o valor do saque: "))
+        if saques_diarios > 0 and valor_saque <= limite_saque and saldo >= valor_saque:
+            saldo -= valor_saque
+            saques_diarios -= 1
+            transacoes.append(f"Saque de R$ {valor_saque:.2f}")
+            print("Saque realizado com sucesso.")
+        else:
+            print("Não foi possível realizar o saque.")
+
+    elif escolha == '2':
+        valor_deposito = float(input("Digite o valor do depósito: "))
+        if valor_deposito > 0:
+            saldo += valor_deposito
+            transacoes.append(f"Depósito de R$ {valor_deposito:.2f}")
+            print("Depósito realizado com sucesso.")
+    
+    elif escolha == '3':
+        print("Extrato:")
+        for transacao in transacoes:
+            print(transacao)
+        print(f"Saldo atual: R$ {saldo:.2f}")
+
+    elif escolha == '4':
+        print("Saindo do sistema.")
+        break
+    
+    else:
+        print("Escolha inválida. Digite o número da operação correta.")
