@@ -1,0 +1,1 @@
+erro de instalalçao open cv python ssl - cmd - python -m pip install --upgrade pip
